@@ -5,6 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 2f;
+    [SerializeField] float dashSpeed = 5f;
+    [SerializeField] float actualMoveSpeed;
+    [SerializeField] float dashDistance = 0.5f;
+    [SerializeField] float dashCooldown = 1f;
+    float dashCounter;
+    float dashCoolCounter;
+
 
     Vector2 mosPos;
     Animator animator;
@@ -19,12 +26,13 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
+        actualMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y , -10);
+        //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         Movement();
         Direction();
 
@@ -49,7 +57,7 @@ public class Player : MonoBehaviour
         }
 
         rb2d.velocity = Vector2.zero;
-
+        Dash();
     }
 
     private void Direction()
@@ -61,8 +69,8 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        var zmianaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-        var zmianaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+        var zmianaX = Input.GetAxis("Horizontal") * Time.deltaTime * actualMoveSpeed;
+        var zmianaY = Input.GetAxis("Vertical") * Time.deltaTime * actualMoveSpeed;
 
         var pozycjaX = transform.position.x + zmianaX;
         var pozycjaY = transform.position.y + zmianaY;
@@ -72,6 +80,34 @@ public class Player : MonoBehaviour
 
     }
 
-  
+    void Dash()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (dashCoolCounter <= 0 && dashCounter <= 0)
+            {
+                actualMoveSpeed = dashSpeed;
+                dashCounter = dashDistance;
+            }
+        }
+
+        if (dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
+
+            if (dashCounter <= 0)
+            {
+                actualMoveSpeed = moveSpeed;
+                dashCoolCounter = dashCooldown;
+            }
+        }
+
+        if (dashCoolCounter > 0)
+        {
+            dashCoolCounter -= Time.deltaTime;
+        }
+    }
+
+
 
 }

@@ -3925,9 +3925,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7897324909698637382, guid: 3d7903123317bfa498bea3effcbeeb48, type: 3}
+      propertyPath: dashSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897324909698637382, guid: 3d7903123317bfa498bea3effcbeeb48, type: 3}
       propertyPath: shootPoint
       value: 
       objectReference: {fileID: 284697527}
+    - target: {fileID: 7897324909698637382, guid: 3d7903123317bfa498bea3effcbeeb48, type: 3}
+      propertyPath: dashDistance
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7897324909698637383, guid: 3d7903123317bfa498bea3effcbeeb48, type: 3}
       propertyPath: m_RootOrder
       value: 1
