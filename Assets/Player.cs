@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] float dashDistance = 0.5f;
     [SerializeField] public float dashCooldown = 1f;
     float dashCounter;
-    float dashCoolCounter;
+    public float dashCoolCounter;
     TrailRenderer trail;
 
 
@@ -59,6 +59,11 @@ public class Player : MonoBehaviour
         }
 
         rb2d.velocity = Vector2.zero;
+        
+    }
+
+    private void Update()
+    {
         Dash();
     }
 

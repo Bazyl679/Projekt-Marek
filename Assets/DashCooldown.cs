@@ -8,9 +8,16 @@ public class DashCooldown : MonoBehaviour
     [SerializeField] Player dashCooldown;
     [SerializeField] Image image;
 
+    private void Start()
+    {
+        image.fillAmount = 1;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        image.fillAmount = dashCooldown.dashCooldown;
+        
+        image.fillAmount = dashCooldown.dashCoolCounter;
+        
     }
 }
