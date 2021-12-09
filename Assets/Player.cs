@@ -8,9 +8,10 @@ public class Player : MonoBehaviour
     [SerializeField] float dashSpeed = 5f;
     [SerializeField] float actualMoveSpeed;
     [SerializeField] float dashDistance = 0.5f;
-    [SerializeField] float dashCooldown = 1f;
+    [SerializeField] public float dashCooldown = 1f;
     float dashCounter;
     float dashCoolCounter;
+    TrailRenderer trail;
 
 
     Vector2 mosPos;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
         actualMoveSpeed = moveSpeed;
+        trail = GetComponent<TrailRenderer>();
     }
 
     // Update is called once per frame
@@ -88,6 +90,7 @@ public class Player : MonoBehaviour
             {
                 actualMoveSpeed = dashSpeed;
                 dashCounter = dashDistance;
+                trail.emitting = true;
             }
         }
 
@@ -99,6 +102,7 @@ public class Player : MonoBehaviour
             {
                 actualMoveSpeed = moveSpeed;
                 dashCoolCounter = dashCooldown;
+                trail.emitting = false;
             }
         }
 
