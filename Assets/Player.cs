@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         Movement();
         Direction();
 
