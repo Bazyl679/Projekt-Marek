@@ -147,7 +147,7 @@ MonoBehaviour:
   playerPOS: {fileID: 0}
   player: {fileID: 0}
   agroRange: 10
-  moveSpeed: 1
+  moveSpeed: 12
   attackDamage: 25
   attackSpeed: 0.5
   enemyHealth: 5
