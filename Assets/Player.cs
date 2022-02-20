@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         actualMoveSpeed = moveSpeed;
         trail = GetComponent<TrailRenderer>();
+        
     }
 
     // Update is called once per frame

@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     Score scoreEnemy;
     [SerializeField] int enemyScore = 20;
     [SerializeField] GameObject floatinPointsPrefab;
+
+    
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
